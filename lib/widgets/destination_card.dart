@@ -38,10 +38,22 @@ class _DestinationCardState extends State<DestinationCard> {
           borderRadius: BorderRadius.circular(20),
           child: Stack(
             children: [
-             SizedBox.expand(
+  SizedBox.expand(
   child: Image.asset(
     widget.destination.imagePath,
     fit: BoxFit.cover,
+    errorBuilder: (context, error, stackTrace) {
+      return Container(
+        color: _getPrimaryColor(widget.destination.category).withOpacity(0.3),
+        child: Center(
+          child: Icon(
+            _getCategoryIcon(widget.destination.category),
+            size: 40,
+            color: _getPrimaryColor(widget.destination.category),
+          ),
+        ),
+      );
+    },
   ),
 ),
               Positioned(
